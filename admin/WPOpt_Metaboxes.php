@@ -23,7 +23,20 @@ class WPOpt_Metaboxes {
 
     private function wpopt_add_metabox() {
         if ( $this->metabox_args['id'] && $this->metabox_args['title'] ) {
-            add_meta_box( $this->metabox_args['id'], $this->metabox_args['title'], array( $this, 'wpopt_metabox_content' ), 'post', 'advanced', 'high' );
+
+            if ( $this->metabox_args['pages'] ) {
+
+                if ( is_array( $this->metabox_args['pages'] ) ) {
+
+                    foreach ( $this->metabox_args['pages'] as $page ) {
+
+                        add_meta_box( $this->metabox_args['id'], $this->metabox_args['title'], array( $this, 'wpopt_metabox_content' ), $page, 'advanced', 'high' );
+
+                    }
+
+                } else { return false; }
+            } else { return false; }
+
         } else {
             return false;
         }
@@ -37,12 +50,10 @@ class WPOpt_Metaboxes {
         // Check of the fields key is valid...
         if ( $this->key_is_valid( 'fields', $this->metabox_args ) ) {
 
-            $num_fields = count( $this->metabox_args['fields'] );
-
             /**
              * Set the nonce field for the form.
              */
-            wp_nonce_field( $this->metabox_args['id'] . '_nonce' );
+            wp_nonce_field( $this->metabox_args['id'] . '_nonce_action', $this->metabox_args['id'] . '_nonce' );
 
             /**
              * Foreach loops through 'fields' array in metabox_args array.
