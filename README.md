@@ -1,2 +1,2 @@
-# wpopt-options
-For educational purposes
+# wp-opt
+Something similar to Option Tree made for educational purposes

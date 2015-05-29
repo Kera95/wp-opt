@@ -1,0 +1,117 @@
+.group:before,
+.group:after {
+    content: "";
+    display: table;
+}
+.group:after {
+    clear: both;
+}
+.group {
+    zoom: 1; /* For IE 6/7 (trigger hasLayout) */
+}
+
+.group:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+
+.wpopt-wrap {
+    margin: 10px 20px 0 2px;
+}
+
+.wpopt-wrap .wpopt-header {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin: 30px 0 0 0;
+    padding: 10px 0;
+    background-color: #008bc5;
+}
+
+.wpopt-wrap .wpopt-header .wpopt-heading {
+    display: block;
+    width: auto;
+    height: auto;
+    float: left;
+    margin: 0 0 0 20px;
+    font-size: 16px;
+    font-weight: normal;
+    color: #e3e3e3;
+}
+
+.wpopt-wrap .wpopt-header .wpopt-autor {
+    display: block;
+    width: auto;
+    height: auto;
+    float: right;
+    margin: 0 20px 0 0;
+    text-align: right;
+    color: #e3e3e3;
+}
+
+.wpopt-wrap .wpopt-content {
+    background-color: #ffffff;
+}
+
+/*
+* Default WPOpt styles that will load in admin area
+*/
+
+.postbox .inside:before,
+.postbox .inside:after {
+    content: "";
+    display: table;
+}
+
+.postbox .inside:after {
+    clear: both;
+}
+
+.postbox .inside {
+    zoom: 1; /* For IE 6/7 (trigger hasLayout) */
+}
+
+.postbox .inside:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.postbox .inside .wpopt-label {
+    display: block;
+    margin: 20px 0 0 0;
+}
+
+.postbox .inside .wpopt-text-block {
+    display: block;
+    width: 100%;
+    margin: 15px 0 0 0;
+}
+
+.postbox .inside .wpopt-textarea-block {
+    display: block;
+    width: 100%;
+    margin: 15px 0 0 0;
+}
+
+.postbox .inside .wpopt-textarea {
+    display: block;
+    width: 60%;
+    margin: 20px 0 0 0;
+    float: left;
+}
+
+.postbox .inside .wpopt-description {
+    display: block;
+    width: 39.95%;
+    margin: 20px 0 0 0;
+    float: right;
+}
+
+.postbox .inside .wpopt-description p {
+    padding: 0 0 0 20px;
+    margin: 0;
+    font-style: italic;
+}
