@@ -1,19 +1,43 @@
 <?php
 
 namespace OptAdmin;
-
+/**
+ * Class WPOpt_Metaboxes
+ * @package OptAdmin
+ * @author Kerim Karalić
+ * Class for handling meta boxes in WordPress
+ * Made for WordPress Theme Options project made for educational purposes
+ */
 class WPOpt_Metaboxes {
 
-    private $custom_fields_object;
-
+    /**
+     * Private class array which holds args that are passed as parameter when making theme options
+     * @var array
+     */
     private $metabox_args = array();
 
+    /**
+     * PHP5 __construct method
+     * It is called when the class is instantiated
+     * Takes 1 type hinted argument
+     * An array with arguments specified must be passed to the object when instantiating
+     * With some arguments missing the program will not work
+     * @param array $args
+     */
     public function __construct( array $args ) {
         $this->metabox_args = $args;
         $this->wpopt_add_metabox();
         add_action( 'save_post', array( $this, 'wpopt_save_metabox_data' ) );
     }
 
+    /**
+     * Check if the key in the array is valid
+     * Specifically, it check if the field is set and not empty
+     * This is internal class method.
+     * @param string $key
+     * @param $array
+     * @return bool
+     */
     private function key_is_valid( $key="", $array ) {
         if ( array_key_exists( $key, $array ) ) {
             if ( isset( $array[$key] ) && !empty( $array[$key] ) ) {
@@ -22,25 +46,38 @@ class WPOpt_Metaboxes {
         } else { return false; }
     }
 
+    /**
+     * This function is called on constructe, so when the class is called this function will execute
+     * takes no args, but uses class property metabox_args
+     * Adds metaboxes with given arguments for each passed page.
+     * @return bool
+     */
     private function wpopt_add_metabox() {
+        // Check if the required parameters are set
         if ( $this->metabox_args['id'] && $this->metabox_args['title'] ) {
-
+            // Check if 'pages' is set
             if ( $this->metabox_args['pages'] ) {
-
+                // Check if 'pages' field is an array
                 if ( is_array( $this->metabox_args['pages'] ) ) {
-
+                    /**
+                     * Foreach loops through 'pages' field array and adds meta box for each page specified
+                     */
                     foreach ( $this->metabox_args['pages'] as $page ) {
 
                         add_meta_box( $this->metabox_args['id'], $this->metabox_args['title'], array( $this, 'wpopt_metabox_content' ), $page, $this->metabox_args['context'], $this->metabox_args['priority'] );
 
                     }
-
+                // if 'pages' is not an array, bail...
                 } else { return false; }
+                // if 'pages' not set, bail...
             } else { return false; }
 
         } else {
+            // if 'id' and 'title' are not set then bail...
             return false;
+
         }
+
     }
 
     /**
@@ -143,6 +180,13 @@ class WPOpt_Metaboxes {
 
     }
 
+    /**
+     * Saves the data to the database taken from metabox fields
+     * Takes 1 parameter, $post_id which reffers to the current post ID
+     * Returns bool depending on the other functions called inside.
+     * @param $post_id
+     * @return bool
+     */
     public function wpopt_save_metabox_data( $post_id ) {
 
         // Check if the nonce is set in $_POST because save_post can be triggered on other places
