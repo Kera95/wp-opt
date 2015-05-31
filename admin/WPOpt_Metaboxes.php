@@ -25,9 +25,11 @@ class WPOpt_Metaboxes {
      * @param array $args
      */
     public function __construct( array $args ) {
+
         $this->metabox_args = $args;
         $this->wpopt_add_metabox();
         add_action( 'save_post', array( $this, 'wpopt_save_metabox_data' ) );
+
     }
 
     /**

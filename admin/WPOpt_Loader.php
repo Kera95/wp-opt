@@ -58,7 +58,6 @@ class WPOpt_Loader {
         wp_enqueue_style( 'wpopt-main-css', get_template_directory_uri() . '/wp-opt/admin/templates/css/wpopt-main.css', array(), '1.0.0' );
     }
 
-
 }
 
 ?>

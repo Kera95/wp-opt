@@ -21,6 +21,11 @@
     margin: 10px 20px 0 2px;
 }
 
+.wpopt-wrap .wpopt-container {
+    -webkit-box-shadow: 0 2px 10px 0 #D4D4D4;
+    box-shadow: 0 2px 10px 0 #D4D4D4;
+}
+
 .wpopt-wrap .wpopt-header {
     display: block;
     width: 100%;
@@ -55,8 +60,53 @@
     background-color: #ffffff;
 }
 
+.wpopt-wrap .wpopt-content .wpopt-content-navmenu {
+    display: block;
+    width: 20%;
+    height: auto;
+    float: left;
+}
+
+.wpopt-wrap .wpopt-content .wpopt-content-navmenu .wpopt-nav {
+    margin: 0;
+    background-color: #008bc5;
+}
+
+.wpopt-wrap .wpopt-content .wpopt-content-navmenu .wpopt-nav li {
+    display: block;
+    margin: 0;
+}
+
+.wpopt-wrap .wpopt-content .wpopt-content-navmenu .wpopt-nav li a {
+    display: block;
+    color: #e3e3e3;
+    padding: 10px;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.wpopt-wrap .wpopt-content .wpopt-content-navmenu .wpopt-nav li a:hover {
+    color: #23282D;
+}
+
+.wpopt-wrap .wpopt-content .wpopt-content-navmenu .wpopt-nav li.active a {
+    background-color: #0075a0;
+    color: #23282d;
+}
+
+.wpopt-wrap .wpopt-content .wpopt-content-navmenu .wpopt-nav li.active a:hover {
+    color: #23282D;
+}
+
+.wpopt-wrap .wpopt-content .wpopt-main-content {
+    display: block;
+    width: 79.97%;
+    height: auto;
+    float: right;
+}
+
 /*
-* Default WPOpt styles that will load in admin area
+* Default WPOpt styles that will load for meta boxes in admin area.
 */
 
 .postbox .inside:before,
@@ -115,3 +165,4 @@
     margin: 0;
     font-style: italic;
 }
+
